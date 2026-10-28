@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #12576E;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        /* Kategori Butonları */
+        .kategori-menusu {
+            margin: 20px;
+        }
+        .kategori-menusu button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .kategori-menusu button:hover {
+            background-color: #003d82;
+        }
+        /* Fotoğraf Galerisi */
+        .galeri {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .galeri.aktif {
+            display: grid;
+        }
+        .galeri img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .galeri img:hover {
+            transform: scale(1.03);
+        }
+        /* Büyütülmüş Fotoğraf (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .kapat-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tamer</h1>
+
+    <!-- Kategori İsimlerini Buradan Değiştirebilirsin -->
+    <div class="kategori-menusu">
+        <button onclick="kategoriGoster('kat1')">Rock Efsaneleri</button>
+        <button onclick="kategoriGoster('kat2')"></button>
+        <button onclick="kategoriGoster('kat3')"></button>
+        <button onclick="kategoriGoster('kat4')"></button>
+    </div>
+
+    <!-- KATEGORİ 1 -->
+    <div id="kat1" class="galeri aktif">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2lBQe7r-bOxAsjTwtaMztk_8Y-KZ-vlMWG8PaUdwRPsUtNYCC1eEtdvur&s=10" alt="Proje 1" onclick="fotografBuyut(this.src)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxwUTK-Ws7VX-DKdNIq_NowWpnKOsWGNvdYdQIh9gTx8ptgTUZBKhdtQHN&s=10" alt="Proje 2" onclick="fotografBuyut(this.src)">
+        <img src="https://kultur.istanbul/gorsel/2022/02/cem-karaca.jpg" alt="Proje 3" onclick="fotografBuyut(this.src)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKVe1-LJY9JDU3jL0HpsOtJQ921aH4cPGxpua_p5mxcABsmaJ03hMnHTun&s=10" alt="Proje 4" onclick="fotografBuyut(this.src)">
+    </div>
+
+    <!-- KATEGORİ 2 -->
+    <div id="kat2" class="galeri">
+        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+1" alt="Lab 1" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+2" alt="Lab 2" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+3" alt="Lab 3" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+4" alt="Lab 4" onclick="fotografBuyut(this.src)">
+    </div>
+
+    <!-- KATEGORİ 3 -->
+    <div id="kat3" class="galeri">
+        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+1" alt="Kampüs 1" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+2" alt="Kampüs 2" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+3" alt="Kampüs 3" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+4" alt="Kampüs 4" onclick="fotografBuyut(this.src)">
+    </div>
+
+    <!-- KATEGORİ 4 -->
+    <div id="kat4" class="galeri">
+        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+1" alt="Hobi 1" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+2" alt="Hobi 2" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+3" alt="Hobi 3" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+4" alt="Hobi 4" onclick="fotografBuyut(this.src)">
+    </div>
+
+    <!-- Büyütülen Fotoğraf Alanı -->
+    <div id="resimModali" class="modal" onclick="modalKapat()">
+        <span class="kapat-btn">&times;</span>
+        <img id="buyuyenResim" src="">
+    </div>
+
+    <!-- İşlevsellik Kodları (Kategori değiştirme ve Büyütme) -->
+    <script>
+        // İlgili kategoriyi gösterip diğerlerini gizleyen fonksiyon
+        function kategoriGoster(kategoriId) {
+            var galeriler = document.getElementsByClassName("galeri");
+            for (var i = 0; i < galeriler.length; i++) {
+                galeriler[i].classList.remove("aktif");
+            }
+            document.getElementById(kategoriId).classList.add("aktif");
+        }
+
+        // Tıklanan fotoğrafı tam ekranda açan fonksiyon
+        function fotografBuyut(resimKaynagi) {
+            var modal = document.getElementById("resimModali");
+            var buyuyenResim = document.getElementById("buyuyenResim");
+            buyuyenResim.src = resimKaynagi;
+            modal.style.display = "flex";
+        }
+
+        // Tam ekran fotoğrafı kapatan fonksiyon
+        function modalKapat() {
+            var modal = document.getElementById("resimModali");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
