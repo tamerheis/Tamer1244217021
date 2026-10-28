@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <style>
+        /* Renk ayarları çıkarıldı, sadece sayfa düzeni (layout) bırakıldı */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .geri-btn {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Fotoğrafların yan yana 2'li durmasını sağlayan ızgara yapısı */
+        .galeri {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .galeri img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* Fotoğraf büyüdüğünde arkadaki sayfanın hafif kararması için gereken zorunlu kısım */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Arka planı karartır */
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        /* Kapatma çarpısı (X) */
+        .kapat-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white; /* Siyah zemin üzerinde görünmesi için beyaz bırakıldı */
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ana sayfaya geri dönme butonu -->
+    <button class="geri-btn" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+
+    <!-- Kategori Başlığı -->
+    <h1>Rock Efsaneleri</h1>
+
+    <!-- 4 Adet Fotoğraf -->
+    <div class="galeri">
+        <img src="https://via.placeholder.com/300x200?text=Foto+1" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+2" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+3" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+4" onclick="fotografBuyut(this.src)">
+    </div>
+
+    <!-- Büyütülen Fotoğrafın Açıldığı Gizli Alan (Dokunmana gerek yok) -->
+    <div id="resimModali" class="modal" onclick="modalKapat()">
+        <span class="kapat-btn">&times;</span>
+        <img id="buyuyenResim" src="">
+    </div>
+
+    <!-- Fotoğrafı büyütüp küçültmeye yarayan kodlar -->
+    <script>
+        function fotografBuyut(resimKaynagi) {
+            var modal = document.getElementById("resimModali");
+            var buyuyenResim = document.getElementById("buyuyenResim");
+            buyuyenResim.src = resimKaynagi;
+            modal.style.display = "flex";
+        }
+
+        function modalKapat() {
+            var modal = document.getElementById("resimModali");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
