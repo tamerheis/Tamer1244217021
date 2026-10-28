@@ -3,62 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamer</title>
+    <title>Ana Sayfa</title>
     <style>
+        /* Renk ayarları çıkarıldı, sadece sayfa düzeni (layout) bırakıldı */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #12576E;
+            padding: 20px;
             text-align: center;
         }
-        h1 {
-            margin-top: 20px;
-            color: #333;
-        }
-        /* Kategori Butonları */
-        .kategori-menusu {
-            margin: 20px;
-        }
-        .kategori-menusu button {
-            background-color: #0056b3;
-            color: white;
-            border: none;
+        
+        .geri-btn {
             padding: 10px 20px;
-            margin: 5px;
+            margin-bottom: 20px;
             font-size: 16px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
         }
-        .kategori-menusu button:hover {
-            background-color: #003d82;
-        }
-        /* Fotoğraf Galerisi */
+
+        /* Fotoğrafların yan yana 2'li durmasını sağlayan ızgara yapısı */
         .galeri {
-            display: none;
+            display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
         }
-        .galeri.aktif {
-            display: grid;
-        }
+        
         .galeri img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
         }
-        .galeri img:hover {
-            transform: scale(1.03);
-        }
-        /* Büyütülmüş Fotoğraf (Modal) */
+
+        /* Fotoğraf büyüdüğünde arkadaki sayfanın hafif kararması için gereken zorunlu kısım */
         .modal {
             display: none;
             position: fixed;
@@ -67,21 +45,22 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0, 0, 0, 0.8); /* Arka planı karartır */
             justify-content: center;
             align-items: center;
         }
+        
         .modal img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
+        
+        /* Kapatma çarpısı (X) */
         .kapat-btn {
             position: absolute;
             top: 20px;
             right: 30px;
-            color: white;
+            color: white; /* Siyah zemin üzerinde görünmesi için beyaz bırakıldı */
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
@@ -90,66 +69,28 @@
 </head>
 <body>
 
-    <h1>Tamer</h1>
+    <!-- Ana sayfaya geri dönme butonu -->
+    <button class="geri-btn" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
 
-    <!-- Kategori İsimlerini Buradan Değiştirebilirsin -->
-    <div class="kategori-menusu">
-        <button onclick="kategoriGoster('kat1')">Rock Efsaneleri</button>
-        <button onclick="kategoriGoster('kat2')"></button>
-        <button onclick="kategoriGoster('kat3')"></button>
-        <button onclick="kategoriGoster('kat4')"></button>
+    <!-- Kategori Başlığı -->
+    <h1>Rock Efsaneleri</h1>
+
+    <!-- 4 Adet Fotoğraf -->
+    <div class="galeri">
+        <img src="https://via.placeholder.com/300x200?text=Foto+1" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+2" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+3" onclick="fotografBuyut(this.src)">
+        <img src="https://via.placeholder.com/300x200?text=Foto+4" onclick="fotografBuyut(this.src)">
     </div>
 
-    <!-- KATEGORİ 1 -->
-    <div id="kat1" class="galeri aktif">
-        <img src="barisakarsu.jpg" alt="Proje 1" onclick="fotografBuyut(this.src)">
-        <img src="barismanco" alt="Proje 2" onclick="fotografBuyut(this.src)">
-        <img src="cemkaraca.jpg" alt="Proje 3" onclick="fotografBuyut(this.src)">
-        <img src="chester.jpg" alt="Proje 4" onclick="fotografBuyut(this.src)">
-    </div>
-
-    <!-- KATEGORİ 2 -->
-    <div id="kat2" class="galeri">
-        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+1" alt="Lab 1" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+2" alt="Lab 2" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+3" alt="Lab 3" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Lab+Foto+4" alt="Lab 4" onclick="fotografBuyut(this.src)">
-    </div>
-
-    <!-- KATEGORİ 3 -->
-    <div id="kat3" class="galeri">
-        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+1" alt="Kampüs 1" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+2" alt="Kampüs 2" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+3" alt="Kampüs 3" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Kampus+Foto+4" alt="Kampüs 4" onclick="fotografBuyut(this.src)">
-    </div>
-
-    <!-- KATEGORİ 4 -->
-    <div id="kat4" class="galeri">
-        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+1" alt="Hobi 1" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+2" alt="Hobi 2" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+3" alt="Hobi 3" onclick="fotografBuyut(this.src)">
-        <img src="https://via.placeholder.com/300x200?text=Hobi+Foto+4" alt="Hobi 4" onclick="fotografBuyut(this.src)">
-    </div>
-
-    <!-- Büyütülen Fotoğraf Alanı -->
+    <!-- Büyütülen Fotoğrafın Açıldığı Gizli Alan (Dokunmana gerek yok) -->
     <div id="resimModali" class="modal" onclick="modalKapat()">
         <span class="kapat-btn">&times;</span>
         <img id="buyuyenResim" src="">
     </div>
 
-    <!-- İşlevsellik Kodları (Kategori değiştirme ve Büyütme) -->
+    <!-- Fotoğrafı büyütüp küçültmeye yarayan kodlar -->
     <script>
-        // İlgili kategoriyi gösterip diğerlerini gizleyen fonksiyon
-        function kategoriGoster(kategoriId) {
-            var galeriler = document.getElementsByClassName("galeri");
-            for (var i = 0; i < galeriler.length; i++) {
-                galeriler[i].classList.remove("aktif");
-            }
-            document.getElementById(kategoriId).classList.add("aktif");
-        }
-
-        // Tıklanan fotoğrafı tam ekranda açan fonksiyon
         function fotografBuyut(resimKaynagi) {
             var modal = document.getElementById("resimModali");
             var buyuyenResim = document.getElementById("buyuyenResim");
@@ -157,7 +98,6 @@
             modal.style.display = "flex";
         }
 
-        // Tam ekran fotoğrafı kapatan fonksiyon
         function modalKapat() {
             var modal = document.getElementById("resimModali");
             modal.style.display = "none";
