@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana Sayfa</title>
     <style>
-        /* Renk ayarları çıkarıldı, sadece sayfa düzeni (layout) bırakıldı */
+       
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,7 +21,7 @@
             cursor: pointer;
         }
 
-        /* Fotoğrafların yan yana 2'li durmasını sağlayan ızgara yapısı */
+       
         .galeri {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -37,7 +37,7 @@
             cursor: pointer;
         }
 
-        /* Fotoğraf büyüdüğünde arkadaki sayfanın hafif kararması için gereken zorunlu kısım */
+        
         .modal {
             display: none;
             position: fixed;
@@ -46,7 +46,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Arka planı karartır */
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
         }
@@ -56,12 +56,12 @@
             max-height: 90%;
         }
         
-        /* Kapatma çarpısı (X) */
+    
         .kapat-btn {
             position: absolute;
             top: 20px;
             right: 30px;
-            color: white; /* Siyah zemin üzerinde görünmesi için beyaz bırakıldı */
+            color: white; 
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
@@ -70,13 +70,12 @@
 </head>
 <body>
 
-    <!-- Ana sayfaya geri dönme butonu -->
+   
     <button class="geri-btn" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
 
-    <!-- Kategori Başlığı -->
+   
     <h1>Rock Efsaneleri</h1>
 
-    <!-- 4 Adet Fotoğraf -->
     <div class="galeri">
         <img src="witcher.jpg" onclick="fotografBuyut(this.src)">
         <img src="lotr.jpg" onclick="fotografBuyut(this.src)">
@@ -84,13 +83,13 @@
         <img src="chester.jpg" onclick="fotografBuyut(this.src)">
     </div>
 
-    <!-- Büyütülen Fotoğrafın Açıldığı Gizli Alan (Dokunmana gerek yok) -->
+  
     <div id="resimModali" class="modal" onclick="modalKapat()">
         <span class="kapat-btn">&times;</span>
         <img id="buyuyenResim" src="">
     </div>
 
-    <!-- Fotoğrafı büyütüp küçültmeye yarayan kodlar -->
+  
     <script>
         function fotografBuyut(resimKaynagi) {
             var modal = document.getElementById("resimModali");
