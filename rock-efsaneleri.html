@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8"><!DOCTYPE html>
-<html lang="tr">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Efsaneleri</title>
+    <title>Müzik - Rock Efsaneleri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +41,7 @@
             transform: scale(0.98);
         }
 
-       
+        /* Bulunulan sayfayı belli etmek için aktif buton stili */
         .aktif-btn {
             background-color: #007bff;
             font-weight: bold;
@@ -62,7 +59,7 @@
             margin: 0 auto;
         }
         
-      
+        /* Fotoğraf boyutları orijinal halindeki gibi bırakıldı */
         .galeri img {
             width: 100%;
             height: 200px;
@@ -84,15 +81,15 @@
     <!-- Yönlendirme Butonları -->
     <div class="nav-bar">
         <button class="nav-btn" onclick="window.location.href='index.html'">Ana Sayfa</button>
-        <button class="nav-btn" onclick="window.location.href='film.html'">Dizi Film</button>
-        <button class="nav-btn" onclick="window.location.href='hobi.html'">Hobi</button>
-        <button class="nav-btn aktif-btn" onclick="window.location.href='rock-efsaneleri.html'">Rcok Efsaneleri</button>
-        <button class="nav-btn" onclick="window.location.href='kitap.html'">Kitap</button>
+        <button class="nav-btn" onclick="window.location.href='dizifilm.html'">Dizi Film</button>
+        <button class="nav-btn" onclick="window.location.href='oyunlar.html'">Oyunlar</button>
+        <button class="nav-btn aktif-btn" onclick="window.location.href='muzik.html'">Müzik</button>
+        <button class="nav-btn" onclick="window.location.href='kitaplar.html'">Kitaplar</button>
     </div>
 
     <h1>Rock Efsaneleri</h1>
 
-   
+    <!-- 4 Adet Fotoğraf (Tıklandığında yeni sekmede açılır) -->
     <div class="galeri">
         <a href="barisakarsu.jpg" target="_blank">
             <img src="barisakarsu.jpg" alt="Barış Akarsu">
@@ -108,108 +105,5 @@
         </a>
     </div>
 
-</body>
-</html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Sayfa</title>
-    <style>
-        
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .geri-btn {
-            padding: 10px 20px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-       
-        .galeri {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .galeri img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-       
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-      
-        .kapat-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-
-    <button class="geri-btn" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
-
-   
-    <h1>Rock Efsaneleri</h1>
-
-   
-    <div class="galeri">
-        <img src="barisakarsu.jpg" onclick="fotografBuyut(this.src)">
-        <img src="barismanco.jpg" onclick="fotografBuyut(this.src)">
-        <img src="cemkaraca.jpg" onclick="fotografBuyut(this.src)">
-        <img src="chester.jpg" onclick="fotografBuyut(this.src)">
-    </div>
-
- 
-    <div id="resimModali" class="modal" onclick="modalKapat()">
-        <span class="kapat-btn">&times;</span>
-        <img id="buyuyenResim" src="">
-    </div>
-
- 
-    <script>
-        function fotografBuyut(resimKaynagi) {
-            var modal = document.getElementById("resimModali");
-            var buyuyenResim = document.getElementById("buyuyenResim");
-            buyuyenResim.src = resimKaynagi;
-            modal.style.display = "flex";
-        }
-
-        function modalKapat() {
-            var modal = document.getElementById("resimModali");
-            modal.style.display = "none";
-        }
-    </script>
 </body>
 </html>
